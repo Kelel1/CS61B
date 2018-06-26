@@ -1,5 +1,13 @@
 public class DogLauncher {
     public static void main(String[] args) {
-        Dog.makeNoise();
+        Dog d = new Dog(15);        
+        // d.makeNoise();
+
+        Dog d2 = new Dog(100);
+
+        Dog bigger = Dog.maxDog(d, d2);
+        bigger.makeNoise();
     }
+
+
 }
