@@ -66,6 +66,29 @@ public class Planet {
         return yForce;
 
     }
+
+    /** Calculate the net X force exerted by all planets  */
+    public double calcNetForceExertedByX(Planet[] p) {
+        double netXForce = 0.0;
+        for(int i = 0; i < p.length - 1; i++) {
+            if(!p[i].equals(this)) {
+                netXForce += calcForceExertedByX(p[i]);
+            }           
+        }
+        return netXForce;
+    }
+
+    /** Calculate the net Y force exerted by all planets  */
+    public double calcNetForceExertedByY(Planet[] p) {
+        double netYForce = 0.0;
+        for(int i = 0; i < p.length - 1; i++) {
+            
+                if(!p[i].equals(this)) {
+                    netYForce += calcForceExertedByY(p[i]);
+                }           
+        }
+        return netYForce;
+    }
  
     
 
