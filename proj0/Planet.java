@@ -42,7 +42,30 @@ public class Planet {
     public double calcForceExertedBy(Planet p) {
         return (gravity*this.mass*p.mass)/(calcDistance(p)*calcDistance(p));
     }
-    
+
+    /** Return force exerted in the X directions */
+    public double calcForceExertedByX(Planet p) {
+        double xForce = calcForceExertedBy(p)*(p.xxPos - this.xxPos)
+        /(calcDistance(p));
+
+        if(xForce < 0.0) {
+            return xForce*-1;
+        }
+        return xForce;
+
+    }
+
+    /** Return force exerted in the Y directions */
+    public double calcForceExertedByY(Planet p) {
+        double yForce= calcForceExertedBy(p)*(p.yyPos - this.yyPos)
+        /(calcDistance(p));
+
+        if(yForce < 0.0) {
+            return yForce*-1;
+        }
+        return yForce;
+
+    }
  
     
 
