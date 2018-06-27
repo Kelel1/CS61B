@@ -29,10 +29,23 @@ public class Planet {
 
     }
 
+    /** Calculate distance between two bodies */
     public double calcDistance(Planet p) {
         return Math.sqrt((p.xxPos - this.xxPos)*(p.xxPos - this.xxPos)
          + (p.yyPos - this.yyPos)*(p.yyPos - this.yyPos));
     }
+
+    /** Return value describing the force exerted on this planet
+     * by the given planet.
+     */
+    public double calcForceExertedBy(Planet p) {
+        return (6.67e-11*this.mass*p.mass)/(calcDistance(p)*calcDistance(p));
+    }
+    
+ 
+    
+
+
 
             
 }
