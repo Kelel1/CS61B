@@ -104,10 +104,11 @@ public class Planet {
         this.xxVel = vNewX;
         this.yyVel = vNewY;
     }
- 
-    
 
-
+    /** Draw planet image at Planet's position */
+    public void draw() {
+        StdDraw.picture(this.xxPos, this.yyPos, "images/"+this.imgFileName);
+    }
 
             
 }
