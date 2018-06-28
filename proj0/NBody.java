@@ -33,5 +33,24 @@ public class NBody {
     } 
        return bodies;
    }
+
+
+   public static void main(String[] args) {
+       
+    double t = Double.parseDouble(args[0]);
+    double dt = Double.parseDouble(args[1]);
+    String fileName = (args[2]);
+
+    NBody.readRadius(fileName);
+    Planet[] planets = NBody.readPlanets(fileName);
+   
+    StdDraw.setXscale(-NBody.readRadius(fileName), NBody.readRadius(fileName));
+    StdDraw.setYscale(-NBody.readRadius(fileName), NBody.readRadius(fileName));
+    StdDraw.picture(0, 0, "images/starfield.jpg");
+    for(int i = 0; i < planets.length; i++) {
+        planets[i].draw();
+    }
+    
+   }
     
 }
