@@ -83,11 +83,26 @@ public class Planet {
         double netYForce = 0.0;
         for(int i = 0; i < p.length - 1; i++) {
             
-                if(!p[i].equals(this)) {
-                    netYForce += calcForceExertedByY(p[i]);
-                }           
+            if(!p[i].equals(this)) {
+                netYForce += calcForceExertedByY(p[i]);
+            }           
         }
         return netYForce;
+    }
+
+    /** Updates planet position and velocity instance vars. */
+    public void update(double dt, double fX, double fY){
+        double aNetX = fX/mass;
+        double aNetY = fY/mass;
+        double vNewX = xxVel + dt*aNetX;
+        double vNewY = yyVel + dt*aNetY;
+        double pNewX = xxPos + dt*vNewX;
+        double pNewY = yyPos + dt*vNewY;
+
+        this.xxPos = pNewX;
+        this.yyPos = pNewY;
+        this.xxVel = vNewX;
+        this.yyVel = vNewY;
     }
  
     
