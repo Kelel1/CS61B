@@ -32,37 +32,32 @@ public class Planet {
 
     /** Calculate distance between two bodies */
     public double calcDistance(Planet p) {
-        return Math.sqrt((p.xxPos - this.xxPos)*(p.xxPos - this.xxPos)
-         + (p.yyPos - this.yyPos)*(p.yyPos - this.yyPos));
+        double dx = p.xxPos - this.xxPos;
+        double dy = p.yyPos - this.yyPos;                
+        return Math.sqrt((dx*dx) + (dy*dy)); 
     }
 
     /** Return value describing the force exerted on this planet
      * by the given planet.
      */
     public double calcForceExertedBy(Planet p) {
-        return (gravity*this.mass*p.mass)/(calcDistance(p)*calcDistance(p));
+        return (gravity*p.mass*this.mass)/(calcDistance(p)*calcDistance(p));
     }
 
     /** Return force exerted in the X directions */
+    /** had to remove the negation for sim. to work properly */
     public double calcForceExertedByX(Planet p) {
         double xForce = calcForceExertedBy(p)*(p.xxPos - this.xxPos)
-        /(calcDistance(p));
-
-        if(xForce < 0.0) {
-            return xForce*-1;
-        }
+        /(calcDistance(p));       
         return xForce;
 
     }
 
     /** Return force exerted in the Y directions */
+    /** had to remove the negation for sim. to work properly */
     public double calcForceExertedByY(Planet p) {
-        double yForce= calcForceExertedBy(p)*(p.yyPos - this.yyPos)
+        double yForce = calcForceExertedBy(p)*(p.yyPos - this.yyPos)
         /(calcDistance(p));
-
-        if(yForce < 0.0) {
-            return yForce*-1;
-        }
         return yForce;
 
     }
@@ -92,8 +87,8 @@ public class Planet {
 
     /** Updates planet position and velocity instance vars. */
     public void update(double dt, double fX, double fY){
-        double aNetX = fX/mass;
-        double aNetY = fY/mass;
+        double aNetX = fX/this.mass;
+        double aNetY = fY/this.mass;
         double vNewX = xxVel + dt*aNetX;
         double vNewY = yyVel + dt*aNetY;
         double pNewX = xxPos + dt*vNewX;
