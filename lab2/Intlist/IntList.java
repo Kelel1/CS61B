@@ -96,8 +96,28 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        //TODO:  fill in method'
+        /**
+        IntList C = new IntList(A.first, null);
+        IntList D = C;
+        A = A.rest;
+        while(A != null) {
+            D.rest = new IntList(A.first, null);
+            A = A.rest;
+            D = D.rest;
+        }
+
+         vaguely understand this nondestructive Inlist code
+         taken from the iterative method IntList squareListIterative
+         above, need to understand fully.
+        */
+        if(C.rest != null) {
+            dcatenate(C.rest, B);
+        } else {
+            C.rest = B;
+        }
+
+        return C;
     }
 
 
