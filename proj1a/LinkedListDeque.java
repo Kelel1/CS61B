@@ -88,7 +88,7 @@ public class LinkedListDeque<T> {
 
     /** Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
-        if(sentinel.next == null) {
+        if(size == 0) {
             return true;
         }
         return false;
@@ -101,25 +101,50 @@ public class LinkedListDeque<T> {
 
     /** Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
-        while(sentinel.previous != null) {
-            System.out.print(sentinel.item + " ");
-            sentinel = sentinel.previous;
+        while(pointer.next != sentinel) {
+            System.out.println(pointer.item);
+            pointer = pointer.next;
         }
-        System.out.println("");
+        
     }
 
     /** Removes and returns the item at the front of the deque.
      * If no such item exists, returns null.
      */
     public T removeFirst() {
-        return null;
+        DequeNode temp = pointer;
+
+        if(sentinel.next != null) {
+            pointer = sentinel.next;
+            sentinel.next =  sentinel.next.next;
+            sentinel.next.previous = sentinel;
+            pointer.previous = null;
+            pointer.next = null;
+            temp = pointer;
+            pointer = sentinel.next;            
+            size--;
+        }        
+        return temp.item;
     }
 
     /** Removes and returns the item at the back of the deque.
      *  If no such item exists, returns null.
      */
     public T removeLast() {
-        return null;
+        DequeNode temp = pointer;
+
+        if(sentinel.previous != null) {
+            pointer = sentinel.previous;
+            sentinel.previous = sentinel.previous.previous;
+            sentinel.previous.next = sentinel;
+            pointer.next = null;
+            pointer.previous = null;
+            temp = pointer;
+            pointer = sentinel.previous;
+            size--;
+            
+        }
+        return temp.item;
     }
 
     /** Gets the item at the given index where 0 is the front,
@@ -146,13 +171,14 @@ public class LinkedListDeque<T> {
 
         LinkedListDeque<Integer> L = new LinkedListDeque<>();
 //       L.addLast(5);
-        L.addLast(10);
-        L.addLast(15);
+        // L.addLast(10);
+        // L.addLast(15);
 ////        L.addLast(25);
-//        L.addFirst(30);
-         L.addFirst(35);
-         L.addFirst(22);
-         System.out.println(L.isEmpty());
+       L.addFirst(30);
+      //   L.addFirst(35);
+        // L.addFirst(22);
+         System.out.println(L.removeLast());
+    //     System.out.println(L.isEmpty());
         // L.addFirst(86);
     //     L.addFirst(84);
     //     L.addFirst(53);
