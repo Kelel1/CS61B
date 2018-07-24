@@ -51,10 +51,10 @@ public class LinkedListDeque<T> {
             pointer = newNode;           
             size++;            
                    
-        } else {         
-         
-            newNode = new DequeNode(sentinel, item, pointer);
-         
+        } else {
+            
+            pointer = sentinel.next;         
+            newNode = new DequeNode(sentinel, item, pointer);         
             pointer.previous = newNode;            
             sentinel.next = newNode;
             pointer = newNode;            
@@ -77,6 +77,7 @@ public class LinkedListDeque<T> {
             size++; 
         } else {            
            
+           pointer = sentinel.previous;
            newNode = new DequeNode(pointer, item, sentinel);
            pointer.next = newNode;
            sentinel.previous = newNode;
@@ -92,20 +93,23 @@ public class LinkedListDeque<T> {
             return true;
         }
         return false;
-    } // complete
+    } 
 
     /** Returns the number of items in the deque. */
     public int size() {
         return size;
-    } //complete
+    } 
 
     /** Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
-        while(pointer.next != sentinel) {
-            System.out.println(pointer.item);
+
+        pointer = sentinel;      
+            
+        while(pointer.next != sentinel) {            
             pointer = pointer.next;
+            System.out.print(pointer.item + " ");
         }
-        
+        System.out.println();        
     }
 
     /** Removes and returns the item at the front of the deque.
@@ -171,23 +175,24 @@ public class LinkedListDeque<T> {
 
         LinkedListDeque<Integer> L = new LinkedListDeque<>();
 //       L.addLast(5);
-        // L.addLast(10);
-        // L.addLast(15);
-////        L.addLast(25);
+          L.addLast(10);
+          L.addLast(15);
+         L.addLast(25);
        L.addFirst(30);
-      //   L.addFirst(35);
-        // L.addFirst(22);
-         System.out.println(L.removeLast());
+         L.addFirst(35);
+         L.addFirst(58);
+       //  L.addFirst(22);
+      //   System.out.println(L.removeLast());
     //     System.out.println(L.isEmpty());
         // L.addFirst(86);
     //     L.addFirst(84);
     //     L.addFirst(53);
     //    L.addFirst(66);
-       // System.out.println("size: " + L.size());
+        // System.out.println("size: " + L.size());
       //  System.out.println(L.get(0));
 //        System.out.println(L.get(3));
       // System.out.println(L.get(2));
-     //   L.printDeque();
+         L.printDeque();
 
 
 
