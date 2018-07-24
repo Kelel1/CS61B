@@ -147,46 +147,19 @@ public class LinkedListDeque<T> {
      *  returns null.  Must not alter deque!
      */
     public T get(int index) {
-        if(index < size &&  index > -1) {
 
-            if(index == 0) {
-                return sentinel.item;
-            } else if(index > 0) {
-                for(int i = 0; i < index - 1; i++) {
-                    sentinel = sentinel.previous;
-                }
-                return sentinel.previous.item;
-            }
+        pointer = sentinel;
 
+        if(index < 0 || index >= size || sentinel.next == null) {
+            return null;
         }
-        return null;
+
+        for(int i = 0; i <= index; i++) {
+            pointer = pointer.next;
+        }
+        return pointer.item;
     }
 
-    public static void main(String[] args) {
-
-        LinkedListDeque<Integer> L = new LinkedListDeque<>();
-//       L.addLast(5);
-          L.addLast(10);
-          L.addLast(15);
-         L.addLast(25);
-       L.addFirst(30);
-         L.addFirst(35);
-         L.addFirst(58);
-       //  L.addFirst(22);
-      //   System.out.println(L.removeLast());
-    //     System.out.println(L.isEmpty());
-        // L.addFirst(86);
-    //     L.addFirst(84);
-    //     L.addFirst(53);
-    //    L.addFirst(66);
-         System.out.println("size: " + L.size());
-      //  System.out.println(L.get(0));
-//        System.out.println(L.get(3));
-      // System.out.println(L.get(2));
-         L.printDeque();
-
-
-
-
+    public static void main(String[] args) {    
     }
 }
