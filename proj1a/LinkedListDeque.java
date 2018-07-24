@@ -27,15 +27,6 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    public LinkedListDeque(T var) {
-        sentinel = new DequeNode(sentinel, null, sentinel);
-        sentinel.next = new DequeNode(sentinel, var, sentinel);
-        pointer = sentinel.next;
-        size = 1;
-    }
-
-
-
     /** Adds an item of type T to the front of the deque. */
     public void addFirst(T item) {
 
@@ -188,7 +179,7 @@ public class LinkedListDeque<T> {
     //     L.addFirst(84);
     //     L.addFirst(53);
     //    L.addFirst(66);
-        // System.out.println("size: " + L.size());
+         System.out.println("size: " + L.size());
       //  System.out.println(L.get(0));
 //        System.out.println(L.get(3));
       // System.out.println(L.get(2));
