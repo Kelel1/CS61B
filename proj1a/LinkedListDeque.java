@@ -8,7 +8,7 @@ public class LinkedListDeque<T> {
 
         public DequeNode(DequeNode p, T i, DequeNode n) {
             previous = p;
-             item = i;
+            item = i;
             next = n;
 
         }
@@ -33,7 +33,7 @@ public class LinkedListDeque<T> {
         DequeNode newNode;
         
 
-        if(sentinel.next == null) {
+        if (sentinel.next == null) {
             newNode = new DequeNode(sentinel, item, sentinel);            
             sentinel.next = newNode;
             sentinel.previous = newNode;
@@ -58,7 +58,7 @@ public class LinkedListDeque<T> {
     public void addLast(T item) {
         DequeNode newNode;
        
-        if(sentinel.previous == null) {            
+        if (sentinel.previous == null) {            
             newNode = new DequeNode(sentinel, item, sentinel);
             sentinel.next = newNode;
             sentinel.previous = newNode;
@@ -80,7 +80,7 @@ public class LinkedListDeque<T> {
 
     /** Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
-        if(size == 0) {
+        if (size == 0) {
             return true;
         }
         return false;
@@ -96,7 +96,7 @@ public class LinkedListDeque<T> {
 
         pointer = sentinel;      
             
-        while(pointer.next != sentinel) {            
+        while (pointer.next != sentinel) {            
             pointer = pointer.next;
             System.out.print(pointer.item + " ");
         }
@@ -109,7 +109,7 @@ public class LinkedListDeque<T> {
     public T removeFirst() {
         DequeNode temp = pointer;
 
-        if(sentinel.next != null) {
+        if (sentinel.next != null) {
             pointer = sentinel.next;
             sentinel.next =  sentinel.next.next;
             sentinel.next.previous = sentinel;
@@ -128,7 +128,7 @@ public class LinkedListDeque<T> {
     public T removeLast() {
         DequeNode temp = pointer;
 
-        if(sentinel.previous != null) {
+        if (sentinel.previous != null) {
             pointer = sentinel.previous;
             sentinel.previous = sentinel.previous.previous;
             sentinel.previous.next = sentinel;
@@ -150,11 +150,11 @@ public class LinkedListDeque<T> {
 
         pointer = sentinel;
 
-        if(index < 0 || index >= size || sentinel.next == null) {
+        if (index < 0 || index >= size || sentinel.next == null) {
             return null;
         }
 
-        for(int i = 0; i <= index; i++) {
+        for (int i = 0; i <= index; i++) {
             pointer = pointer.next;
         }
         return pointer.item;

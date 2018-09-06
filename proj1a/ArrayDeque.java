@@ -1,10 +1,10 @@
-public class ArrayDeque<Item> {
+public class ArrayDeque<T> {
 
-    private Item[] items;
+    private T[] items;
     private int size;
 
     public ArrayDeque() {
-        items = (Item[]) new Object[8];
+        items = (T[]) new Object[8];
         size = 0;
     }
 
@@ -12,7 +12,7 @@ public class ArrayDeque<Item> {
      * has reached max capacity.
      */
     private void resize(int capacity) {
-        Item[] a = (Item[]) new Object[capacity];
+        T[] a = (T[]) new Object[capacity];
         System.arraycopy(items, 0, a, 0, size);
     }
 
@@ -22,12 +22,12 @@ public class ArrayDeque<Item> {
     * the front pointer should loop back around to the end 
     * of the array.
     */
-   public void addFirst(Item item) {
+   public void addFirst(T item) {
 
    }
 
    /** Adds an item of type T to the back of the deque. */
-   public void addLast(Item item) {
+   public void addLast(T item) {
        if (size == items.length) {
          resize(size*2);
        }
@@ -48,7 +48,7 @@ public class ArrayDeque<Item> {
 
    /** Prints the items in the deque from first to last, separated by a space. */
    public void printDeque() {
-     for(int i = 0; i < items.length; i++) {
+     for (int i = 0; i < items.length; i++) {
        System.out.print(items[i] + " ");
      }
 
@@ -72,15 +72,15 @@ public class ArrayDeque<Item> {
     *  1 is the next item, and so forth.  If no such item exists,
     *  returns null.  Must not alter deque!
     */
-   public Item get(int index) {
+   public T get(int index) {
      return items[index];
    }
    
    public static void main(String[] args) {
      
-     ArrayDeque<String> numbs = new ArrayDeque<String>();
-     numbs.addLast("Hello Kern!");
+    //  ArrayDeque<String> numbs = new ArrayDeque<String>();
+    //  numbs.addLast("Hello Kern!");
 
-     System.out.println(numbs.get(0));
+    //  System.out.println(numbs.get(0));
    }
 }
