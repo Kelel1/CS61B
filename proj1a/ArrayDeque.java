@@ -57,14 +57,14 @@ public class ArrayDeque<T> {
    /** Removes and returns the item at the front of the deque.
     * If no such item exists, returns null.
     */
-   public Item removeFirst() {
+   public T removeFirst() {
     return null;
    }
 
    /** Removes and returns the item at the back of the deque.
     *  If no such item exists, returns null.
     */
-   public Item removeLast() {
+   public T removeLast() {
       return null;
    }
 
@@ -76,11 +76,11 @@ public class ArrayDeque<T> {
      return items[index];
    }
    
-  //  public static void main(String[] args) {
+   public static void main(String[] args) {
      
-  //    ArrayDeque<String> numbs = new ArrayDeque<String>();
-  //    numbs.addLast("Hello Kern!");
+    //  ArrayDeque<String> numbs = new ArrayDeque<String>();
+    //  numbs.addLast("Hello Kern!");
 
-  //    System.out.println(numbs.get(0));
-  //  }
+    //  System.out.println(numbs.get(0));
+   }
 }
