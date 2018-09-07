@@ -160,6 +160,39 @@ public class LinkedListDeque<T> {
         return pointer.item;
     }
 
-    public static void main(String[] args) {    
+    /** Same as get, but uses recursion */
+    public T getRecursive(int index) {
+
+        pointer = sentinel;
+        int count = index;
+
+        if (index < 0 || index >= size || sentinel.next == null) {
+            return null;
+        }
+
+        while (count > -1) {                       
+            getRecursive(count-=1);            
+            pointer = pointer.next;
+            return pointer.item;
+        }
+        
+        return pointer.item;
+
+
+    }
+
+    public static void main(String[] args) {  
+        
+        // LinkedListDeque<Integer> K = new LinkedListDeque<>();
+        // K.addFirst(7);
+        // K.addFirst(3);
+        // K.addFirst(15);
+        // K.addFirst(25);
+        
+        // System.out.print(K.get(1));
+
+        // System.out.println();
+        // System.out.print(K.getRecursive(1) + " <= Recurrsive");
+        // System.out.println();
     }
 }
