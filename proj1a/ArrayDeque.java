@@ -76,11 +76,5 @@ public class ArrayDeque<T> {
      return items[index];
    }
    
-   public static void main(String[] args) {
-     
-    //  ArrayDeque<String> numbs = new ArrayDeque<String>();
-    //  numbs.addLast("Hello Kern!");
-
-    //  System.out.println(numbs.get(0));
-   }
+   
 }
