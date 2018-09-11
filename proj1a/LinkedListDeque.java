@@ -128,7 +128,11 @@ public class LinkedListDeque<T> {
     public T removeLast() {
         DequeNode temp = pointer;
 
-        if (sentinel.previous != null && (size > 0)) {
+        if (isEmpty()) {
+            size = 0;
+        }
+
+        if (sentinel.previous != null) {
             pointer = sentinel.previous;
             sentinel.previous = sentinel.previous.previous;
             sentinel.previous.next = sentinel;
