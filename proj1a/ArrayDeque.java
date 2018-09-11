@@ -1,19 +1,23 @@
 public class ArrayDeque<T> {
 
     private T[] items;
-    private int size;
+		private int size;
+		private int nextFirst;
+		private int nextLast;
 
     public ArrayDeque() {
-        items = (T[]) new Object[8];
-        size = 0;
+      items = (T[]) new Object[8];
+			size = 0;
+			nextFirst = 0;
+			nextLast = 1;
     }
 
     /** Creates a new bigger array(2X), once original array
      * has reached max capacity.
      */
     private void resize(int capacity) {
-        T[] a = (T[]) new Object[capacity];
-        System.arraycopy(items, 0, a, 0, size);
+      // T[] a = (T[]) new Object[capacity];
+      // System.arraycopy(items, 0, a, 0, size);
     }
 
 
@@ -23,27 +27,42 @@ public class ArrayDeque<T> {
     * of the array.
     */
    public void addFirst(T item) {
+		int temp = nextFirst;
 
+		if (nextFirst == 0) {
+			items[nextFirst] = item;
+			size+=1;
+			nextFirst = minusOne(0);
+		} else if ((nextFirst != 0) && items[nextFirst] == null) {
+			items[nextFirst] = item;
+			size+=1;
+			nextFirst = minusOne(nextFirst);
+
+		}
+
+		// System.out.println(nextFirst + " <= should not be -1");
+
+
+		 
    }
 
    /** Adds an item of type T to the back of the deque. */
    public void addLast(T item) {
-       if (size == items.length) {
-         resize(size*2);
-       }
-       items[size] = item;
-       size++;
-
+      //  if (size == items.length) {
+      //    resize(size*2);
+      //  }
+      items[size] = item;
+      size++;
    }
 
    /** Returns true if deque is empty, false otherwise. */
    public boolean isEmpty() {       
-       return size == 0;
+      return size == 0;
    }
 
    /** Returns the number of items in the deque. */
    public int size() {       
-        return size;
+    return size;
    }
 
    /** Prints the items in the deque from first to last, separated by a space. */
@@ -74,7 +93,38 @@ public class ArrayDeque<T> {
     */
    public T get(int index) {
      return items[index];
-   }
+	 }
+	 
+	 /** Computes the index immediately before a given index */
+	 private int minusOne(int index) {
+		if ((index == 0) ) {
+			return items.length - 1;
+		} else {
+			return index - 1;
+		}
+		 
+	 }
+
+	 /** Computes the index immediately after a given index */
+	 private int plusOne(int index) {
+		 if ((index == size - 1) && (items[0] == null)) {
+			 return 0;			 
+		 }
+
+		 return index + 1;
+	 }
    
-   
+  //  public static void main(String[] args) {
+     
+  //    ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
+	// 	 numbs.addFirst(5);
+  //    numbs.addFirst(10);
+  //    numbs.addFirst(15);
+
+  //    System.out.println(numbs.get(0) + " <= should be 5");
+  //    System.out.println(numbs.get(1) + " <= should be null");
+  //    System.out.println(numbs.get(7) + " <= should be 10");
+  //    System.out.println(numbs.get(6) + " <= should be 15");
+  //    System.out.println(numbs.get(5) + " <= should be null");
+  //  }
 }

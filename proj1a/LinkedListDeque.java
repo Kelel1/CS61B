@@ -137,6 +137,10 @@ public class LinkedListDeque<T> {
             temp = pointer;
             pointer = sentinel.previous;
             size--;
+
+            if (size < 0) {
+                size = 0;
+            }
             
         }
         return temp.item;
@@ -177,9 +181,20 @@ public class LinkedListDeque<T> {
         }
         
         return pointer.item;
-
-
     }
 
-    
+    // public static void main(String[] args) {  
+        
+    //     LinkedListDeque<Integer> K = new LinkedListDeque<>();
+    //     K.addFirst(7);
+    //     K.addFirst(3);
+    //     K.addFirst(15);
+    //     K.addFirst(25);
+        
+    //     System.out.print(K.get(1));
+
+    //     System.out.println();
+    //     System.out.print(K.getRecursive(1) + " <= Recurrsive");
+    //     System.out.println();
+    // }
 }
