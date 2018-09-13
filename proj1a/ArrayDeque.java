@@ -58,9 +58,7 @@ public class ArrayDeque<T> {
    public void addLast(T item) {
      int temp = nextLast;
        if (size == items.length) {
-         resize(size*2, 1);
-         System.out.println(items.length + " Length");
-         System.out.println(size + " size");
+         resize(size*2, 1);        
        
        }
       if(items[nextLast%items.length] == null) {
