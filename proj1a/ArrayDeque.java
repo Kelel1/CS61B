@@ -29,7 +29,7 @@ public class ArrayDeque<T> {
    public void addFirst(T item) {
 		int temp = nextFirst;
 
-		if (nextFirst == 0) {
+		if (nextFirst == 0 && items[nextFirst] == null) {
 			items[nextFirst] = item;
 			size+=1;
 			nextFirst = minusOne(0);
@@ -48,11 +48,15 @@ public class ArrayDeque<T> {
 
    /** Adds an item of type T to the back of the deque. */
    public void addLast(T item) {
+     int temp = nextLast;
       //  if (size == items.length) {
       //    resize(size*2);
       //  }
-      items[size] = item;
-      size++;
+      if(items[nextLast%items.length] == null) {
+        items[nextLast%items.length] = item;
+        nextLast = plusOne(temp);
+        size++;
+      } 
    }
 
    /** Returns true if deque is empty, false otherwise. */
@@ -116,15 +120,37 @@ public class ArrayDeque<T> {
    
   //  public static void main(String[] args) {
      
-  //    ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
-	// 	 numbs.addFirst(5);
-  //    numbs.addFirst(10);
-  //    numbs.addFirst(15);
+  //   ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
+  //   numbs.addLast(5);
+  //   numbs.addFirst(10);
+  //   numbs.addLast(15);
+  //   numbs.addFirst(20);
+  //   numbs.addLast(25);
+  //   numbs.addFirst(30);
+  //   numbs.addLast(35);
+  //   numbs.addFirst(40);
+  //   numbs.addLast(45);
+    
+  //   // numbs.addFirst(5);
+  //   // numbs.addLast(10);
+  //   // numbs.addLast(15);
+  //   // numbs.addLast(20);
+  //   // numbs.addLast(25);
+  //   // numbs.addLast(30);
+  //   // // numbs.addFirst(0);
+  //   // numbs.addLast(35);
+  //   // numbs.addLast(40);
+  //   // numbs.addLast(45);
+  //   System.out.println(numbs.get(0) + " <= should be null");
+  //   System.out.println(numbs.get(1) + " <= should be 10");
+  //   System.out.println(numbs.get(2) + " <= should be 15");
+  //   // System.out.println(numbs.get(6) + " <= should be 15");
+  //   // System.out.println(numbs.get(5) + " <= should be null");
+  //   System.out.println();
+  //   numbs.printDeque();
+  //   System.out.println();
+  //   System.out.println(numbs.size() + " <= size");
+  //   System.out.println();
 
-  //    System.out.println(numbs.get(0) + " <= should be 5");
-  //    System.out.println(numbs.get(1) + " <= should be null");
-  //    System.out.println(numbs.get(7) + " <= should be 10");
-  //    System.out.println(numbs.get(6) + " <= should be 15");
-  //    System.out.println(numbs.get(5) + " <= should be null");
   //  }
 }
