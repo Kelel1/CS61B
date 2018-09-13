@@ -15,9 +15,10 @@ public class ArrayDeque<T> {
     /** Creates a new bigger array(2X), once original array
      * has reached max capacity.
      */
-    private void resize(int capacity) {
-      // T[] a = (T[]) new Object[capacity];
-      // System.arraycopy(items, 0, a, 0, size);
+    private void resize(int capacity, int startPosition) {
+      T[] a = (T[]) new Object[capacity];
+      System.arraycopy(items, 0, a, startPosition, size);
+      items = a;
     }
 
 
@@ -27,7 +28,14 @@ public class ArrayDeque<T> {
     * of the array.
     */
    public void addFirst(T item) {
-		int temp = nextFirst;
+    int temp = nextFirst;
+    
+    if (size == items.length) {
+      resize(size*2, 1);
+      System.out.println(items.length + " Length");
+      System.out.println(size + " size");
+    
+    }
 
 		if (nextFirst == 0 && items[nextFirst] == null) {
 			items[nextFirst] = item;
@@ -40,7 +48,7 @@ public class ArrayDeque<T> {
 
 		}
 
-		// System.out.println(nextFirst + " <= should not be -1");
+	
 
 
 		 
@@ -49,14 +57,18 @@ public class ArrayDeque<T> {
    /** Adds an item of type T to the back of the deque. */
    public void addLast(T item) {
      int temp = nextLast;
-      //  if (size == items.length) {
-      //    resize(size*2);
-      //  }
+       if (size == items.length) {
+         resize(size*2, 1);
+         System.out.println(items.length + " Length");
+         System.out.println(size + " size");
+       
+       }
       if(items[nextLast%items.length] == null) {
         items[nextLast%items.length] = item;
         nextLast = plusOne(temp);
-        size++;
-      } 
+        size+=1;
+      }      
+      
    }
 
    /** Returns true if deque is empty, false otherwise. */
@@ -123,13 +135,14 @@ public class ArrayDeque<T> {
   //   ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
   //   numbs.addLast(5);
   //   numbs.addFirst(10);
-  //   numbs.addLast(15);
+  //   numbs.addLast(15);   
   //   numbs.addFirst(20);
   //   numbs.addLast(25);
-  //   numbs.addFirst(30);
+  //   numbs.addLast(30);
   //   numbs.addLast(35);
-  //   numbs.addFirst(40);
+  //   numbs.addLast(40);
   //   numbs.addLast(45);
+  //   numbs.addLast(50);
     
   //   // numbs.addFirst(5);
   //   // numbs.addLast(10);
@@ -141,15 +154,15 @@ public class ArrayDeque<T> {
   //   // numbs.addLast(35);
   //   // numbs.addLast(40);
   //   // numbs.addLast(45);
-  //   System.out.println(numbs.get(0) + " <= should be null");
-  //   System.out.println(numbs.get(1) + " <= should be 10");
-  //   System.out.println(numbs.get(2) + " <= should be 15");
+  //   // System.out.println(numbs.get(0) + " <= should be null");
+  //   // System.out.println(numbs.get(1) + " <= should be 10");
+  //   // System.out.println(numbs.get(2) + " <= should be 15");
   //   // System.out.println(numbs.get(6) + " <= should be 15");
   //   // System.out.println(numbs.get(5) + " <= should be null");
   //   System.out.println();
   //   numbs.printDeque();
   //   System.out.println();
-  //   System.out.println(numbs.size() + " <= size");
+  //   System.out.println(numbs.size() + " <= size2");
   //   System.out.println();
 
   //  }
