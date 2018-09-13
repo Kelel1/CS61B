@@ -31,9 +31,7 @@ public class ArrayDeque<T> {
     int temp = nextFirst;
     
     if (size == items.length) {
-      resize(size*2, 1);
-      System.out.println(items.length + " Length");
-      System.out.println(size + " size");
+      resize(size*2, 1);    
     
     }
 
@@ -128,40 +126,40 @@ public class ArrayDeque<T> {
 		 return index + 1;
 	 }
    
-  //  public static void main(String[] args) {
+   public static void main(String[] args) {
      
-  //   ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
-  //   numbs.addLast(5);
-  //   numbs.addFirst(10);
-  //   numbs.addLast(15);   
-  //   numbs.addFirst(20);
-  //   numbs.addLast(25);
-  //   numbs.addLast(30);
-  //   numbs.addLast(35);
-  //   numbs.addLast(40);
-  //   numbs.addLast(45);
-  //   numbs.addLast(50);
+    ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
+    numbs.addLast(5);
+    numbs.addFirst(10);
+    numbs.addLast(15);   
+    numbs.addFirst(20);
+    numbs.addLast(25);
+    numbs.addLast(30);
+    numbs.addLast(35);
+    numbs.addLast(40);
+    numbs.addLast(45);
+    numbs.addLast(50);
     
-  //   // numbs.addFirst(5);
-  //   // numbs.addLast(10);
-  //   // numbs.addLast(15);
-  //   // numbs.addLast(20);
-  //   // numbs.addLast(25);
-  //   // numbs.addLast(30);
-  //   // // numbs.addFirst(0);
-  //   // numbs.addLast(35);
-  //   // numbs.addLast(40);
-  //   // numbs.addLast(45);
-  //   // System.out.println(numbs.get(0) + " <= should be null");
-  //   // System.out.println(numbs.get(1) + " <= should be 10");
-  //   // System.out.println(numbs.get(2) + " <= should be 15");
-  //   // System.out.println(numbs.get(6) + " <= should be 15");
-  //   // System.out.println(numbs.get(5) + " <= should be null");
-  //   System.out.println();
-  //   numbs.printDeque();
-  //   System.out.println();
-  //   System.out.println(numbs.size() + " <= size2");
-  //   System.out.println();
+    // numbs.addFirst(5);
+    // numbs.addLast(10);
+    // numbs.addLast(15);
+    // numbs.addLast(20);
+    // numbs.addLast(25);
+    // numbs.addLast(30);
+    // // numbs.addFirst(0);
+    // numbs.addLast(35);
+    // numbs.addLast(40);
+    // numbs.addLast(45);
+    // System.out.println(numbs.get(0) + " <= should be null");
+    // System.out.println(numbs.get(1) + " <= should be 10");
+    // System.out.println(numbs.get(2) + " <= should be 15");
+    // System.out.println(numbs.get(6) + " <= should be 15");
+    // System.out.println(numbs.get(5) + " <= should be null");
+    System.out.println();
+    numbs.printDeque();
+    System.out.println();
+    System.out.println(numbs.get(0));
+    System.out.println();
 
-  //  }
+   }
 }
