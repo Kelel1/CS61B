@@ -108,7 +108,10 @@ public class ArrayDeque<T> {
     *  If no such item exists, returns null.
     */
    public T removeLast() {
-      return null;
+      T toReturn = items[nextLast-=1];
+      items[nextLast] = null;
+      size-=1;
+      return toReturn;
    }
 
    /** Gets the item at the given index where 0 is the front,
@@ -176,10 +179,14 @@ public class ArrayDeque<T> {
   //   // System.out.println(numbs.get(5) + " <= should be null");
   //   System.out.println();
   //   numbs.printDeque();
-  //   System.out.println();
-  //   // System.out.println(numbs.size());
+  //   System.out.println();    
   //   System.out.println();
   //   System.out.println(numbs.size + " <= size");
+  //   System.out.println();    
+  //   System.out.println();
+  //   System.out.println(numbs.removeLast());
+  //   System.out.println();
+  //   numbs.printDeque();
   //   System.out.println();
 
   //  }
