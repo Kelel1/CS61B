@@ -39,13 +39,23 @@ public class ArrayDeque<T> {
 		if (nextFirst == 0 && items[nextFirst] == null) {
 			items[nextFirst] = item;
 			size+=1;
-			nextFirst = minusOne(0);
-		} else if ((nextFirst != 0) && items[nextFirst] == null) {
+			nextFirst = minusOne(temp);
+		} else if ((nextFirst > 0) && items[minusOne(nextFirst)] == null) {
+      nextFirst -=1;
 			items[nextFirst] = item;
 			size+=1;
 			nextFirst = minusOne(nextFirst);
 
-		}
+		} else if (nextFirst > 0 && items[nextFirst] != null) {
+      
+      int i = 0;
+      while (items[i] != null && i < items.length) {        
+        
+        i+=1;
+      }
+      items[i] = item;     
+      size += 1;
+    }
 		 
    }
 
@@ -60,11 +70,11 @@ public class ArrayDeque<T> {
              
         items[nextLast%items.length] = item;        
         nextLast = plusOne(temp);        
-        size+=1;
+        size += 1;
       } else {
         items[nextLast%items.length+1] = item;
-        nextLast = plusOne(temp);        
-        size+=1;
+        nextLast = plusOne(temp+1);        
+        size += 1;
       }      
       
    }
@@ -142,7 +152,12 @@ public class ArrayDeque<T> {
   //   numbs.addLast(45);
   //   numbs.addLast(50);
   //   numbs.addFirst(55);
+  //   numbs.addLast(70);
+  //   numbs.addLast(75);
   //   numbs.addFirst(60);
+  //   numbs.addLast(80);
+  //   // numbs.addFirst(65);
+  //   // numbs.addLast(70);
     
   //   // numbs.addFirst(5);
   //   // numbs.addLast(10);
@@ -163,6 +178,8 @@ public class ArrayDeque<T> {
   //   numbs.printDeque();
   //   System.out.println();
   //   // System.out.println(numbs.size());
+  //   System.out.println();
+  //   System.out.println(numbs.size + " <= size");
   //   System.out.println();
 
   //  }
