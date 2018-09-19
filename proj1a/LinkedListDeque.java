@@ -127,7 +127,7 @@ public class LinkedListDeque<T> {
      */
     public T removeLast() {
 
-        if (isEmpty()) {
+        if (sentinel.previous == null) {
             return null;
         }
 
