@@ -63,12 +63,13 @@ public class ArrayDeque<T> {
     * If no such item exists, returns null.
     */
    public T removeFirst() {
+    if (size == 0) {
+      return null;      
+    }
     T toReturn = items[(nextFirst+=1)%(items.length)];
     items[nextFirst%(items.length)] = null;
     size-=1;
-    if (size == 0) {
-      return null;
-    }
+    
     return toReturn;
    }
 
@@ -76,12 +77,13 @@ public class ArrayDeque<T> {
     *  If no such item exists, returns null.
     */
    public T removeLast() {
+    if (size == 0) {
+      return null;
+    }
       T toReturn = items[nextLast-=1];
       items[nextLast] = null;
       size-=1;
-      if (size == 0) {
-        return null;
-      }
+      
       return toReturn;
    }
 
