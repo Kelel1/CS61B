@@ -19,8 +19,7 @@ public class ArrayDeque<T> {
       T[] a = (T[]) new Object[capacity];
       System.arraycopy(items, 0, a, startPosition, size);
       items = a;
-      // nextFirst = 0;
-      // nextLast = 1;
+      
     }
 
 
@@ -30,53 +29,15 @@ public class ArrayDeque<T> {
     * of the array.
     */
    public void addFirst(T item) {
-    int temp = nextFirst;
-    
-    if (size == items.length) {
-      resize(size*2, 1);    
-    }
-
-		if (nextFirst == 0 && items[nextFirst] == null) {
-			items[nextFirst] = item;
-			size+=1;
-			nextFirst = minusOne(temp);
-		} else if ((nextFirst > 0) && items[minusOne(nextFirst)] == null) {
-      nextFirst -=1;
-			items[nextFirst] = item;
-			size+=1;
-			nextFirst = minusOne(nextFirst);
-
-		} else if (nextFirst > 0 && items[nextFirst] != null) {
-      
-      int i = 0;
-      while (items[i] != null && i < items.length) {        
-        
-        i+=1;
-      }
-      items[i] = item;     
-      size += 1;
-      nextFirst = minusOne(nextFirst);
-    }
-		 
+    // int temp = nextFirst;
+    items[nextFirst] = item;
+    nextFirst = minusOne(nextFirst);
+    size++;		 
    }
 
    /** Adds an item of type T to the back of the deque. */
    public void addLast(T item) {
-     int temp = nextLast;
-       if (size == items.length) {
-        resize(size*2, 0); 
-       
-       } 
-       if(items[nextLast%items.length] == null) {  
-             
-        items[size%items.length] = item;        
-        nextLast = plusOne(temp);        
-        size += 1;
-      } else {
-        items[size%items.length] = item;
-        nextLast = plusOne(temp+1);        
-        size += 1;
-      }      
+          
       
    }
 
@@ -102,7 +63,7 @@ public class ArrayDeque<T> {
     * If no such item exists, returns null.
     */
    public T removeFirst() {
-    T toReturn = items[nextFirst+=1];
+    T toReturn = items[nextFirst];
     items[nextFirst] = null;
     size-=1;
     return toReturn;
@@ -148,50 +109,22 @@ public class ArrayDeque<T> {
   //  public static void main(String[] args) {
      
   //   ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
-  //   numbs.addLast(5);
-  //   numbs.addFirst(10);
-  //   numbs.addLast(15);   
-  //   numbs.addFirst(20);
-  //   numbs.addLast(25);
-  //   numbs.addLast(30);
-  //   numbs.addLast(35);
-  //   numbs.addLast(40);
-  //   numbs.addLast(45);
-  //   numbs.addLast(50);
-  //   numbs.addFirst(55);
-  //   numbs.addLast(70);
-  //   numbs.addLast(75);
-  //   numbs.addFirst(60);
-  //   numbs.addLast(80);
-  //   // numbs.addFirst(65);
-  //   // numbs.addLast(70);
-    
-  //   // numbs.addFirst(5);
-  //   // numbs.addLast(10);
-  //   // numbs.addLast(15);
-  //   // numbs.addLast(20);
-  //   // numbs.addLast(25);
-  //   // numbs.addLast(30);
-  //   // // numbs.addFirst(0);
-  //   // numbs.addLast(35);
-  //   // numbs.addLast(40);
-  //   // numbs.addLast(45);
-  //   // System.out.println(numbs.get(0) + " <= should be null");
-  //   // System.out.println(numbs.get(1) + " <= should be 10");
-  //   // System.out.println(numbs.get(2) + " <= should be 15");
-  //   // System.out.println(numbs.get(6) + " <= should be 15");
-  //   // System.out.println(numbs.get(5) + " <= should be null");
+  //   numbs.addFirst(0);
+  //   numbs.addFirst(1);
+  //   numbs.addFirst(2);
+  //   numbs.addFirst(3);
+  //   numbs.addFirst(4);
+  //   System.out.println(numbs.isEmpty());
   //   System.out.println();
-  //   numbs.printDeque();
-  //   System.out.println();    
+  //   numbs.addFirst(6);
+  //   numbs.addFirst(7);
+        
   //   System.out.println();
-  //   System.out.println(numbs.size + " <= size");
-  //   System.out.println();    
-  //   System.out.println();
-  //   System.out.println(numbs.removeFirst());
+  //   // System.out.println(numbs.removeFirst());
   //   System.out.println();
   //   numbs.printDeque();
   //   System.out.println();
+  //   System.out.println(numbs.get(5));
 
   //  }
 }
