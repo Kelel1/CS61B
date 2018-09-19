@@ -55,6 +55,7 @@ public class ArrayDeque<T> {
       }
       items[i] = item;     
       size += 1;
+      nextFirst = minusOne(nextFirst);
     }
 		 
    }
@@ -68,11 +69,11 @@ public class ArrayDeque<T> {
        } 
        if(items[nextLast%items.length] == null) {  
              
-        items[nextLast%items.length] = item;        
+        items[size%items.length] = item;        
         nextLast = plusOne(temp);        
         size += 1;
       } else {
-        items[nextLast%items.length+1] = item;
+        items[size%items.length] = item;
         nextLast = plusOne(temp+1);        
         size += 1;
       }      
@@ -101,7 +102,10 @@ public class ArrayDeque<T> {
     * If no such item exists, returns null.
     */
    public T removeFirst() {
-    return null;
+    T toReturn = items[nextFirst+=1];
+    items[nextFirst] = null;
+    size-=1;
+    return toReturn;
    }
 
    /** Removes and returns the item at the back of the deque.
@@ -184,7 +188,7 @@ public class ArrayDeque<T> {
   //   System.out.println(numbs.size + " <= size");
   //   System.out.println();    
   //   System.out.println();
-  //   System.out.println(numbs.removeLast());
+  //   System.out.println(numbs.removeFirst());
   //   System.out.println();
   //   numbs.printDeque();
   //   System.out.println();
