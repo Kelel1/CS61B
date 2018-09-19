@@ -63,8 +63,8 @@ public class ArrayDeque<T> {
     * If no such item exists, returns null.
     */
    public T removeFirst() {
-    T toReturn = items[nextFirst];
-    items[nextFirst] = null;
+    T toReturn = items[(nextFirst+=1)%(items.length)];
+    items[nextFirst%(items.length)] = null;
     size-=1;
     return toReturn;
    }
@@ -120,11 +120,17 @@ public class ArrayDeque<T> {
   //   numbs.addFirst(7);
         
   //   System.out.println();
-  //   // System.out.println(numbs.removeFirst());
+  //   System.out.println(numbs.removeFirst() + "<= First 7");
+  //   System.out.println(numbs.removeFirst() + "<= First 6");
+  //   System.out.println(numbs.removeFirst() + "<= First 4");
+  //   System.out.println(numbs.removeFirst() + "<= First 3");
+  //   System.out.println(numbs.removeFirst() + "<= First 2");
+  //   System.out.println(numbs.removeFirst() + "<= First 1");
+  //   System.out.println(numbs.removeFirst() + "<= First 0");
   //   System.out.println();
   //   numbs.printDeque();
   //   System.out.println();
-  //   System.out.println(numbs.get(5));
+  //   // System.out.println(numbs.get(5));
 
   //  }
 }
