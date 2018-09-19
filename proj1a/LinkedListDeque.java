@@ -126,11 +126,6 @@ public class LinkedListDeque<T> {
      *  If no such item exists, returns null.
      */
     public T removeLast() {
-
-        if (size == 0) {
-            return null;
-        }
-
         DequeNode temp = pointer;        
 
         if (sentinel.previous != null) {
@@ -143,7 +138,10 @@ public class LinkedListDeque<T> {
             pointer = sentinel.previous;
             size--;            
             
+        } else if(isEmpty()) {
+            return null;
         }
+
         return temp.item;
     }
 
