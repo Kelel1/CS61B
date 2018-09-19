@@ -107,6 +107,11 @@ public class LinkedListDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeFirst() {
+
+        if (isEmpty()) {
+            return null;
+        }       
+
         DequeNode temp = pointer;
 
         if (sentinel.next != null) {
@@ -126,7 +131,12 @@ public class LinkedListDeque<T> {
      *  If no such item exists, returns null.
      */
     public T removeLast() {
-        DequeNode temp = pointer;        
+
+        if (isEmpty()) {
+            return null;
+        }
+
+        DequeNode temp = pointer;                
 
         if (sentinel.previous != null) {
             pointer = sentinel.previous;
@@ -136,11 +146,9 @@ public class LinkedListDeque<T> {
             pointer.previous = null;
             temp = pointer;
             pointer = sentinel.previous;
-            size--;            
+            size-=1;            
             
-        } else if(isEmpty()) {
-            return null;
-        }
+        } 
 
         return temp.item;
     }
