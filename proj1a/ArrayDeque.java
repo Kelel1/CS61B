@@ -28,8 +28,7 @@ public class ArrayDeque<T> {
     * the front pointer should loop back around to the end 
     * of the array.
     */
-   public void addFirst(T item) {
-    // int temp = nextFirst;
+   public void addFirst(T item) {    
     items[nextFirst] = item;
     nextFirst = minusOne(nextFirst);
     size++;		 
@@ -38,7 +37,7 @@ public class ArrayDeque<T> {
    /** Adds an item of type T to the back of the deque. */
    public void addLast(T item) {
 
-    items[nextLast%(items.length)] = item;
+    items[nextLast % (items.length)] = item;
     nextLast = plusOne(nextLast);
     size++;     
    }
@@ -68,7 +67,7 @@ public class ArrayDeque<T> {
     if (size == 0) {
       return null;      
     }
-    T toReturn = items[(nextFirst+=1)%(items.length)];
+    T toReturn = items[(nextFirst+=1) % (items.length)];
     items[nextFirst%(items.length)] = null;
     size-=1;
     
@@ -94,6 +93,9 @@ public class ArrayDeque<T> {
     *  returns null.  Must not alter deque!
     */
    public T get(int index) {
+     if (index < 0 || index > items.length - 1|| items[index] == null) {
+       return null;
+     }
      return items[index];
 	 }
 	 
@@ -119,9 +121,9 @@ public class ArrayDeque<T> {
   //  public static void main(String[] args) {
      
   //   ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
-  //   // numbs.addFirst(0);
-  //   // numbs.addFirst(1);
-  //   // numbs.addFirst(2);
+  //   numbs.addFirst(0);
+  //   numbs.addFirst(1);
+  //   numbs.addFirst(2);
   //   // numbs.addFirst(3);
   //   // numbs.addFirst(4);
   //   // System.out.println(numbs.isEmpty());
@@ -129,14 +131,14 @@ public class ArrayDeque<T> {
   //   // numbs.addFirst(6);
   //   // numbs.addFirst(7);
 
-  //   numbs.addLast(0);
-  //   numbs.addLast(1);
-  //   numbs.addLast(2);
-  //   numbs.addLast(3);
-  //   numbs.addLast(4);
-  //   numbs.addLast(6);
-  //   numbs.addLast(7);
-  //   numbs.addLast(8);
+  //   // numbs.addLast(0);
+  //   // numbs.addLast(1);
+  //   // numbs.addLast(2);
+  //   // numbs.addLast(3);
+  //   // numbs.addLast(4);
+  //   // numbs.addLast(6);
+  //   // numbs.addLast(7);
+  //   // numbs.addLast(8);
         
   //   System.out.println();
   //   // System.out.println(numbs.removeFirst() + "<= First 7");
@@ -149,6 +151,7 @@ public class ArrayDeque<T> {
   //   System.out.println();
   //   numbs.printDeque();
   //   System.out.println();
+  //   System.out.println(numbs.get(7));
   //   // System.out.println(numbs.get(5));
 
   //  }
