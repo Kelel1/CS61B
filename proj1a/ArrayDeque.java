@@ -28,8 +28,10 @@ public class ArrayDeque<T> {
     * the front pointer should loop back around to the end 
     * of the array.
     */
-   public void addFirst(T item) {    
-    items[nextFirst] = item;
+   public void addFirst(T item) {  
+     if (nextFirst != nextLast) {
+      items[nextFirst] = item;
+     }      
     nextFirst = minusOne(nextFirst);
     size++;		 
    }
@@ -93,7 +95,7 @@ public class ArrayDeque<T> {
     *  returns null.  Must not alter deque!
     */
    public T get(int index) {
-     if (index < 0 || index > items.length - 1|| items[index] == null) {
+     if (index < 0 || index > items.length - 1 || items[index] == null) {
        return null;
      }
      return items[index];
@@ -118,41 +120,41 @@ public class ArrayDeque<T> {
 		 return index + 1;
 	 }
    
-  //  public static void main(String[] args) {
+   public static void main(String[] args) {
      
-  //   ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
-  //   numbs.addFirst(0);
-  //   numbs.addFirst(1);
-  //   numbs.addFirst(2);
-  //   // numbs.addFirst(3);
-  //   // numbs.addFirst(4);
-  //   // System.out.println(numbs.isEmpty());
-  //   // System.out.println();
-  //   // numbs.addFirst(6);
-  //   // numbs.addFirst(7);
+    ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
+    numbs.addFirst(0);
+    numbs.addFirst(1);
+    numbs.addFirst(2);
+    numbs.addFirst(3);
+    numbs.addFirst(4);
+    // System.out.println(numbs.isEmpty());
+    // System.out.println();
+    // numbs.addFirst(6);
+    // numbs.addFirst(7);
 
-  //   // numbs.addLast(0);
-  //   // numbs.addLast(1);
-  //   // numbs.addLast(2);
-  //   // numbs.addLast(3);
-  //   // numbs.addLast(4);
-  //   // numbs.addLast(6);
-  //   // numbs.addLast(7);
-  //   // numbs.addLast(8);
+    numbs.addLast(5);
+    numbs.addFirst(6);
+    numbs.addLast(7);
+    numbs.addFirst(8);
+    // numbs.addLast(4);
+    // numbs.addLast(6);
+    // numbs.addLast(7);
+    // numbs.addLast(8);
         
-  //   System.out.println();
-  //   // System.out.println(numbs.removeFirst() + "<= First 7");
-  //   // System.out.println(numbs.removeFirst() + "<= First 6");
-  //   // System.out.println(numbs.removeFirst() + "<= First 4");
-  //   // System.out.println(numbs.removeFirst() + "<= First 3");
-  //   // System.out.println(numbs.removeFirst() + "<= First 2");
-  //   // System.out.println(numbs.removeFirst() + "<= First 1");
-  //   // System.out.println(numbs.removeFirst() + "<= First 0");
-  //   System.out.println();
-  //   numbs.printDeque();
-  //   System.out.println();
-  //   System.out.println(numbs.get(7));
-  //   // System.out.println(numbs.get(5));
+    System.out.println();
+    // System.out.println(numbs.removeFirst() + "<= First 7");
+    // System.out.println(numbs.removeFirst() + "<= First 6");
+    // System.out.println(numbs.removeFirst() + "<= First 4");
+    // System.out.println(numbs.removeFirst() + "<= First 3");
+    // System.out.println(numbs.removeFirst() + "<= First 2");
+    // System.out.println(numbs.removeFirst() + "<= First 1");
+    // System.out.println(numbs.removeFirst() + "<= First 0");
+    System.out.println();
+    numbs.printDeque();
+    System.out.println();
+    System.out.println(numbs.get(0));
+    // System.out.println(numbs.get(5));
 
-  //  }
+   }
 }
