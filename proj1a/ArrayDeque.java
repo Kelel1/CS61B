@@ -29,15 +29,17 @@ public class ArrayDeque<T> {
     * of the array.
     */
    public void addFirst(T item) {  
-    if (nextFirst != nextLast) {
-      items[nextFirst] = item;
-     }      
+    if (items[nextFirst] == null) {
+          
+    items[nextFirst] = item;
     nextFirst = minusOne(nextFirst);
     size++;		 
+    }
    }
 
    /** Adds an item of type T to the back of the deque. */
    public void addLast(T item) {
+
 
     items[nextLast % (items.length)] = item;
     nextLast = plusOne(nextLast);
@@ -133,11 +135,11 @@ public class ArrayDeque<T> {
   //   // numbs.addFirst(6);
   //   // numbs.addFirst(7);
 
-  //   // numbs.addLast(5);
-  //   // numbs.addFirst(6);
-  //   // numbs.addLast(7);
+  //   numbs.addLast(5);
+  //   numbs.addFirst(6);
+  //   numbs.addLast(7);
   //   // numbs.addFirst(8);
-  //   // numbs.addLast(4);
+  //   // numbs.addLast(14);
   //   // numbs.addLast(6);
   //   // numbs.addLast(7);
   //   // numbs.addLast(8);
