@@ -29,7 +29,9 @@ public class ArrayDeque<T> {
     * of the array.
     */
    public void addFirst(T item) {  
-    
+    if (nextFirst != nextLast) {
+      items[nextFirst] = item;
+     }      
     nextFirst = minusOne(nextFirst);
     size++;		 
    }
