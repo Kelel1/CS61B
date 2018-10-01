@@ -40,10 +40,12 @@ public class ArrayDeque<T> {
    /** Adds an item of type T to the back of the deque. */
    public void addLast(T item) {
 
+   if (items[nextLast] == null) {
+     items[nextLast % (items.length)] = item;
+     nextLast = plusOne(nextLast);
+     size++;     
+   }
 
-    items[nextLast % (items.length)] = item;
-    nextLast = plusOne(nextLast);
-    size++;     
    }
 
    /** Returns true if deque is empty, false otherwise. */
@@ -138,7 +140,7 @@ public class ArrayDeque<T> {
   //   numbs.addLast(5);
   //   numbs.addFirst(6);
   //   numbs.addLast(7);
-  //   // numbs.addFirst(8);
+  //   numbs.addLast(8);
   //   // numbs.addLast(14);
   //   // numbs.addLast(6);
   //   // numbs.addLast(7);
