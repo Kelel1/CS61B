@@ -123,6 +123,7 @@ public class ArrayDeque<T> {
 
 		 return index + 1;
 	 }
+<<<<<<< HEAD
    
   //  public static void main(String[] args) {
      
@@ -161,4 +162,8 @@ public class ArrayDeque<T> {
   //   // System.out.println(numbs.get(5));
 
   //  }
+=======
+ 
+  
+>>>>>>> aebe6b1082839da83c8bc8ad8ce0d79147a31c89
 }
