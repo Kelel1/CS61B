@@ -28,13 +28,19 @@ public class ArrayDeque<T> {
     * the front pointer should loop back around to the end 
     * of the array.
     */
-   public void addFirst(T item) {  
-    if (items[nextFirst] == null) {
+   public void addFirst(T item) {
+
+    if (size == items.length) {
+      resize(size*2, nextFirst + 1);
+      // nextFirst = 0;
+    }
+       
+    // if (items[nextFirst] == null) {      
           
     items[nextFirst] = item;
     nextFirst = minusOne(nextFirst);
     size++;		 
-    }
+    // }
    }
 
    /** Adds an item of type T to the back of the deque. */
@@ -137,11 +143,12 @@ public class ArrayDeque<T> {
   //   // numbs.addFirst(6);
   //   // numbs.addFirst(7);
 
-  //   numbs.addLast(5);
+  //   numbs.addFirst(5);
   //   numbs.addFirst(6);
-  //   numbs.addLast(7);
-  //   numbs.addLast(8);
-  //   // numbs.addLast(14);
+  //   numbs.addFirst(7);
+  //   numbs.addFirst(8);
+  //   numbs.addFirst(14);
+  //   numbs.addFirst(15);
   //   // numbs.addLast(6);
   //   // numbs.addLast(7);
   //   // numbs.addLast(8);
