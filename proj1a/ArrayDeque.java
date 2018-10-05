@@ -36,11 +36,17 @@ public class ArrayDeque<T> {
     }
        
     // if (items[nextFirst] == null) {      
-          
-    items[nextFirst] = item;
-    nextFirst = minusOne(nextFirst);
-    size++;		 
-    // }
+    /* My incorrerect implementation      
+      items[nextFirst] = item;
+      nextFirst = minusOne(nextFirst);
+      size++;
+      Correct implementation below from Data Structures
+    * and Algorithms in Java (6th ed.) Goodrich et al. 	
+    */
+    int newFirst = (nextFirst + size) % items.length;
+    items[newFirst] = item;
+    size++;	 
+    
    }
 
    /** Adds an item of type T to the back of the deque. */
@@ -148,7 +154,7 @@ public class ArrayDeque<T> {
   //   numbs.addFirst(7);
   //   numbs.addFirst(8);
   //   numbs.addFirst(14);
-  //   numbs.addFirst(15);
+  //   // numbs.addFirst(15);
   //   // numbs.addLast(6);
   //   // numbs.addLast(7);
   //   // numbs.addLast(8);
