@@ -173,7 +173,7 @@ public class ArrayDeque<T> {
 		 return index + 1;
 	 }
 
- //  public static void main(String[] args) {
+  public static void main(String[] args) {
 
 //     ArrayDeque<Integer> numbs = new ArrayDeque<Integer>();
 //     numbs.addFirst(1);
@@ -232,5 +232,5 @@ public class ArrayDeque<T> {
 //     // System.out.println(numbs.get(0));
 //     // System.out.println(numbs.get(5));
 
-//    }
+   }
 }
