@@ -100,16 +100,16 @@ public class ArrayDeque<T> {
       //  resize(items.length / 2, 0);
 
       T[] a = (T[]) new Object[items.length / 2];
-      System.out.println(nextFirst + " <= nxxxxt!!!");
+      
       System.arraycopy(items, nextFirst% items.length, a, 0, size);      
       nextFirst = 0;
       items = a;
    }
 //       ********************* 11.9.2018 - 1.3.2019    
-    System.out.println(items[nextFirst% items.length] + " <=  nextFirst:1");
+   
     T toReturn = items[nextFirst % items.length];
     items[nextFirst % items.length] = null;    
-    System.out.println(items[nextFirst% items.length] + " <=  nextFirst:2");
+    
     nextFirst+=1;
     size-=1;
     
