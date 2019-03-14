@@ -1,9 +1,9 @@
 public interface Deque<Item> {
 
     public void    addFirst(Item x);
-    public void    removeFirst(Item x);
+    public Item    removeFirst();
     public void    printDeque();
-    public Item    addLast(Item x);
+    public void    addLast(Item x);
     public Item    removeLast();
     public Item    getItem(int i);
     public boolean isEmpty();

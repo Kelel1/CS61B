@@ -1,8 +1,9 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class TestPalindrome {
-    /*// You must use this palindrome, and not instantiate
+    // You must use this palindrome, and not instantiate
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
 
@@ -14,5 +15,20 @@ public class TestPalindrome {
             actual += d.removeFirst();
         }
         assertEquals("persiflage", actual);
-    } Uncomment this class once you've created your Palindrome class. */
+    }
+
+    @Test
+    public void testIsPalindrome() {
+
+        String tstString_1 = "";
+        String tstString_2 = "1";
+        String tstString_3 = "racecar";
+        String tstString_4 = "abba";
+
+        assertEquals(palindrome.isPalindrome(tstString_1), true);
+        assertEquals(palindrome.isPalindrome(tstString_2), true);
+        assertEquals(palindrome.isPalindrome(tstString_3), true);
+        assertEquals(palindrome.isPalindrome(tstString_4), true);
+
+    }
 }

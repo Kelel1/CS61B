@@ -1,6 +1,3 @@
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 public class TestOffByOne {
     /*
     // You must use this CharacterComparator and not instantiate
