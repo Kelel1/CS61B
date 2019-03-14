@@ -46,13 +46,13 @@ public class Palindrome {
         return  false;
     }
 
-    public static void main(String[] args) {
-
-
-        Palindrome pal = new Palindrome();
-
-        pal.isPalindrome("aba");
-    }
+//    public static void main(String[] args) {
+//
+//
+//        Palindrome pal = new Palindrome();
+//
+//        pal.isPalindrome("aba");
+//    }
 
 
 }
